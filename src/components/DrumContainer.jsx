@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./DrumContainer.css";
+import DrumPad from "./DrumPad";
 
 // const letters with an array of letters starting with the letters: "Q", "W", "E", "A", "S", "D", "Z", "X", "C"
 
@@ -30,30 +31,16 @@ const letters = [
 const DrumContainer = () => {
   const [display, setDisplay] = useState("");
 
-  const play = (sound) => {
-    console.log("Sound: ", sound);
-    const audio = new Audio(sound);
-    audio.currentTime = 0;
-    audio.play();
-  };
-
   return (
     <div id="drum-machine">
       <section className="pad-bank">
         {letters.map((item, index) => {
           return (
-            <button
-              id={item.label}
-              className="drum-pad"
+            <DrumPad
               key={item.letter + index}
-              onClick={() => {
-                play(item.sound);
-                setDisplay(item.label);
-              }}
-            >
-              <audio className="clip" id={item.letter} src={item.sound}></audio>
-              {item.letter}
-            </button>
+              {...item}
+              setDisplay={setDisplay}
+            />
           );
         })}
       </section>
