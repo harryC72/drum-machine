@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DrumContainer.css";
 import DrumPad from "./DrumPad";
 
@@ -30,6 +30,49 @@ const letters = [
 
 const DrumContainer = () => {
   const [display, setDisplay] = useState("");
+
+  const handleKeyDown = (e) => {
+    if ((e.key === "Q") | (e.key === "q")) {
+      const sound = new Audio(letters[0].sound);
+      sound && sound.play();
+    }
+    if ((e.key === "W") | (e.key === "w")) {
+      const sound = new Audio(letters[1].sound);
+      sound && sound.play();
+    }
+    if ((e.key === "E") | (e.key === "e")) {
+      const sound = new Audio(letters[2].sound);
+      sound && sound.play();
+    }
+    if ((e.key === "A") | (e.key === "a")) {
+      const sound = new Audio(letters[3].sound);
+      sound && sound.play();
+    }
+    if ((e.key === "S") | (e.key === "s")) {
+      const sound = new Audio(letters[4].sound);
+      sound && sound.play();
+    }
+    if ((e.key === "D") | (e.key === "d")) {
+      const sound = new Audio(letters[5].sound);
+      sound && sound.play();
+    }
+    if ((e.key === "Z") | (e.key === "z")) {
+      const sound = new Audio(letters[6].sound);
+      sound && sound.play();
+    }
+    if ((e.key === "X") | (e.key === "x")) {
+      const sound = new Audio(letters[7].sound);
+      sound && sound.play();
+    }
+    if ((e.key === "C") | (e.key === "c")) {
+      const sound = new Audio(letters[8].sound);
+      sound && sound.play();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <div id="drum-machine">
